@@ -1,1 +1,1 @@
-# Template Front con nextui tailwind y react con js
+# Template Front con nextui tailwind redux y react js
