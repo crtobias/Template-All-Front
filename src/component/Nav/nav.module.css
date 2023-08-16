@@ -1,14 +1,69 @@
 
 
-.menu{
-    color: rgb(0, 0, 0);
-    background: #d6d1d1;
-    opacity: 85%;
-    text-align: center;
+.switch-modos-nav{
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgba(11, 176, 124, 0.616);
+    height: 25px;
+    width: 25px;
 }
-.nav{
-    color: rgb(0, 0, 0);
-    background: #d6d1d1;
-    opacity: 85%;
+
+
+.container-nav-light{
+    height: 50px;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-evenly;
+    
+}
+.container-nav-black{
+    height: 50px;
+    color: white;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+
+.opcion-nav{
+    min-width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.container-menu-light{
+    position: absolute;
+    width: 100vw;
+    top: 50px;
+    min-height: 300px;
     text-align: center;
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    background-color: rgb(247, 247, 247); 
+    color: rgb(0, 0, 0);
+}
+.container-menu-black {
+  position: absolute;
+  width: 100vw;
+  top: 50px;
+  min-height: 300px;
+  text-align: center;
+  opacity: 0; 
+  visibility: hidden; 
+  transition: opacity 0.3s ease, visibility 0.3s ease; 
+  background-color: black; 
+    color: antiquewhite;
+}
+.container-menu-light.active,
+.container-menu-black.active {
+  opacity: 1; /* Mostrar cuando está activo */
+  visibility: visible; /* Mostrar cuando está activo */
 }

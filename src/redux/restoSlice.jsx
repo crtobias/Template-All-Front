@@ -3,9 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-     //EJEMPLOS
-//   menus: [],
-
+   blackmode:false,
 }
 
 export const defaultSlice = createSlice({
@@ -13,40 +11,9 @@ export const defaultSlice = createSlice({
   initialState,
   reducers: {
 
-         //EJEMPLOS
-    // agregarPlato: (state, action) => {
-    //   const cart = current(state.cart)
-    //   const id = action.payload.dish
-    //   const indexOfEl = cart.findIndex((e) => e.dish === id)
-    //   if (indexOfEl > -1) {
-    //     state.cart[indexOfEl] = {
-    //       ...cart[indexOfEl],
-    //       quantity: cart[indexOfEl].quantity + 1,
-    //     }
-    //     window.localStorage.setItem("cart", JSON.stringify(state.cart))
-    //     return
-    //   }
-    //   state.cart.push(action.payload)
-    //   window.localStorage.setItem("cart", JSON.stringify(state.cart))
-    // },
-
-    // removeDish: (state, action) => {
-    //   const cart = current(state.cart)
-    //   const id = action.payload.dish
-    //   const indexOfEl = cart.findIndex((e) => e.dish === id)
-    //   if (indexOfEl > -1) {
-    //     if (cart[indexOfEl].quantity > 1)
-    //       state.cart[indexOfEl] = {
-    //         ...cart[indexOfEl],
-    //         quantity: cart[indexOfEl].quantity - 1,
-    //       }
-    //     else
-    //       state.cart = cart.filter((dish) => dish.dish !== action.payload.dish)
-
-    //     window.localStorage.setItem("cart", JSON.stringify(state.cart))
-    //     return
-    //   }
-    // },
+     blackModeChange: (state) => {
+          state.blackmode = !state.blackmode;
+        }
 
 
   },
@@ -64,6 +31,7 @@ export const defaultSlice = createSlice({
 export const {
      //EJEMPLOS
 //   agregarPlato,
+blackModeChange
  
 } = defaultSlice.actions
 

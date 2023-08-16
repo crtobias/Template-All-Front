@@ -1,82 +1,38 @@
 
-import styles from "./nav.module.css"
+import React, { useState } from "react";
+import styles from "./nav.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { blackModeChange } from '../../redux/restoSlice';
+import { Boton } from "../Boton";
+import { BotonNav } from "../BotonNav";
 
+export const Nav = () => {
+  const [showDiv, setShowDiv] = useState(false); // Estado para controlar la visibilidad del div
+  const BlackMode = useSelector((state) => state.blackmode);
+  const dispatch = useDispatch();
 
-import React from "react";
-import {NavbarMenu,NavbarMenuToggle,Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import {Avatar} from "@nextui-org/react"
-
-export  const Nav=()=> {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const toggleDiv = () => {
+    setShowDiv(!showDiv); // Cambia el estado al contrario de su valor actual
+  };
 
   return (
-    <Navbar
-      isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-      className={styles.nav}
-    >
-      <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-      </NavbarContent>
+    <section className={BlackMode ? styles[`container-nav-black`] : styles[`container-nav-light`]}>
+      <div className={styles[`opcion-nav`]}>
+        <BotonNav texto="Opcion 2" onClick={toggleDiv} />
+      </div>
+      <div className={styles[`opcion-nav`]}>
+        <Boton onClick={() => dispatch(blackModeChange())} texto={BlackMode ? "🌙" : "☀"} />
+      </div>
+      <div className={styles[`opcion-nav`]}>
+        <Boton className={styles[`boton-opcion-2`]} texto="Opcion 2" />
+      </div>
 
-      <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
-          
-          <p className="font-bold text-inherit">Nav</p>
-        </NavbarBrand>
-      </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-         
-          <p className="font-bold text-inherit">Nav</p>
-        </NavbarBrand>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+      <div className={BlackMode ? `${styles["container-menu-black"]} ${showDiv ? styles["active"] : ""}` : `${styles["container-menu-light"]} ${showDiv ? styles["active"] : ""}`}>
+        hola
+      </div>
 
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-        <Avatar isBordered color="primary" src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />
-        </NavbarItem>
-      </NavbarContent>
-      
-      <NavbarMenu className={styles.menu}>
-      <p>opcion 1</p>
-      <p>opcion 2</p>
-      <p>opcion 3</p>
-      <p>opcion 4</p>
-      </NavbarMenu>
-    </Navbar>
+    </section>
   );
 }
+

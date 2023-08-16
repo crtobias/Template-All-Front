@@ -1,33 +1,19 @@
 import React, { useState } from "react";
 import styles from "./home.module.css";
-import { Switch } from "@nextui-org/react";
-import { sun } from "../../assets";
-import { moon } from "../../assets";
+import { useSelector } from "react-redux";
+
 
 
 export const Home = () => {
-    const [modoClaro, setModoClaro] = useState(true);
-    const toggleModo = () => {
-        setModoClaro((prevState) => !prevState);
-    };
+
+    const BlackMode = useSelector((state) => state.blackmode);
+   
 
     return (
-        <div
-            className={`${styles.app} ${modoClaro ? styles.modoClaro : styles.modoOscuro
-                }`}
-        >
-            <Switch
-            className={styles.modos}
-                defaultSelected
-                size="lg"
-                color="success"
-                startContent={<p>☀</p>}
-                endContent={<p>🌙</p>}
-                onClick={toggleModo}
-            >
-                <p className={styles.switch}></p>
-            </Switch>
+        <div className={BlackMode ? styles[`container-home-black`] : styles[`container-home-light`]}> 
+         
             <h1 className={styles.title}>Template Front</h1>
+            <p>Tobias gonzalez arriola</p>
 
 
 
